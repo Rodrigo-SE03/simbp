@@ -11,7 +11,7 @@ TinyGPSPlus gps;
 
 const char* ssid = "redeR";
 const char* password = "--($_$)--";
-const char* endpoint_url = "http://192.168.102.88:81/leituras";
+const char* endpoint_url = "http://192.168.202.104:81/leituras";
 
 const int trigPin = 14;
 const int echoPin = 27;
@@ -27,8 +27,8 @@ const int numReadings = 10;
 #define GPS_BAUD 9600
 String macString = "";
 
-float latitude = 1000;
-float longitude = 1000;
+float latitude = -16.671244161185665;
+float longitude = -49.23883199075531;
 
 void setup() {
   Serial.begin(115200); // Starts the serial communication

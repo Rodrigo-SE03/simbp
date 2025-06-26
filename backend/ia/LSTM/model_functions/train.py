@@ -4,10 +4,20 @@ import os
 
 import matplotlib.pyplot as plt
 
-def train_model(model, train_loader, loss_fn, optimizer, n_epochs, patience, device):
+
+def train_model(
+    model,
+    train_loader,
+    loss_fn,
+    optimizer,
+    n_epochs,
+    patience,
+    device,
+    plot_loss=False,
+):
     loss_list = []
 
-    best_loss = float('inf')
+    best_loss = float("inf")
     patience_counter = 0
     best_model_state = None
 
@@ -40,11 +50,10 @@ def train_model(model, train_loader, loss_fn, optimizer, n_epochs, patience, dev
             logger.info("Early stopping ativado!")
             n_epochs = epoch + 1
             break
-    
 
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
-    
+
     plt.plot(range(1, n_epochs + 1), loss_list)
     plt.title("Erro Quadrático Médio (MSE) durante o Treinamento")
     plt.xlabel("Épocas")
@@ -54,4 +63,7 @@ def train_model(model, train_loader, loss_fn, optimizer, n_epochs, patience, dev
     if not os.path.exists("ia_models"):
         os.makedirs("ia_models")
     plt.savefig("ia_models/loss.png")
+    if plot_loss:
+        plt.show()
+
     plt.close()

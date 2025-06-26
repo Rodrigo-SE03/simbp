@@ -3,6 +3,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
+
 @router.get("")
 async def get_coordenadas():
     pipeline = [
@@ -15,5 +16,4 @@ async def get_coordenadas():
         }
     ]
 
-    dados = aggregate(get_collection(), pipeline)
-    return dados
+    return aggregate(get_collection(), pipeline)
